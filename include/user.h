@@ -35,7 +35,7 @@ namespace dbl {
             string color;
         
             User(const json *);
-            inline bool operator==(const dbl::User & const;
+            inline bool operator==(const dbl::User &) const;
     };
 };
 
