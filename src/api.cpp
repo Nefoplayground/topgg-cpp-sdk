@@ -6,6 +6,7 @@
 using std::ostringstream;
 using std::nouppercase;
 using std::uppercase;
+using std::setw;
 using std::hex;
 
 using dbl::Api;
