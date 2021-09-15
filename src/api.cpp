@@ -35,7 +35,7 @@ Api::Api(const string & tkn) {
 }
 
 User Api::get_user(const string & snowflake) {
-    const json res = this->request("/user/" + snowflake);
+    const json res = this->request("/user/" + snowflake, false);
     return User(&res);
 }
 
@@ -48,4 +48,3 @@ BotSearch Api::search_bot(const string & query) {
     const json res = this->request("/bots?search=" + encode_uri(query));
     return BotSearch(&res);
 }
-

@@ -42,7 +42,7 @@ void Http::set_token(const string & tk) noexcept {
     });
 }
 
-json request(const string & path, const bool bot) {
+json request(const string & path, const bool bot = true) {
     this->handle_ratelimit(bot);
     const Result res = this->cli.Get(path);
     if (res->status >= 400) {
