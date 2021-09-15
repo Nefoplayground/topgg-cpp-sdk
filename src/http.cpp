@@ -34,7 +34,7 @@ void Http::handle_ratelimit(const bool & bot) {
 }
 
 void Http::set_token(const string & tk) noexcept {
-    this->cli = httplib::Client("https://top.gg");
+    this->cli = Client("https://top.gg");
     this->cli.enable_server_certificate_verification(false);
     this->cli.set_default_headers({
         { "Authorization", tk },
