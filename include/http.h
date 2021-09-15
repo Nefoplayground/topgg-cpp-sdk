@@ -36,7 +36,7 @@ namespace dbl {
 
         protected:
             void set_token(const string &) noexcept;
-            json request(const string &);
+            json request(const string &, const bool);
     };
 };
 
