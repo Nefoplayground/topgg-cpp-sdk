@@ -6,4 +6,6 @@ Please note that the library is currently:
 - not complete
 ***yet!***
 
-be patient ty
+despite that, feel free to contribute or something
+
+thanks and keep being patient ty
