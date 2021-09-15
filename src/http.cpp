@@ -21,7 +21,7 @@ void Http::handle_ratelimit(const bool & bot) {
     }
     if (bot) {
         if (this->next_bot_request && this->global_bot_request_count == 60 && current < this->next_bot_request) {
-            const struct http_exception_t exc = { 429, dbl::ratelimit_type::BOT, this->next_bot_request - current };
+            const struct http_exception_t exc = { 429, ratelimit_type_t::BOT, this->next_bot_request - current };
             throw exc;
         } else {
             if (this->global_bot_request_count == 100)
