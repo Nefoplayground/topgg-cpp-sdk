@@ -3,7 +3,7 @@
 
 #include <vector>
 #include <string>
-#include "deps/json.hpp"
+#include <deps/json.hpp>
 
 using json = nlohmann::basic_json;
 using std::string;
