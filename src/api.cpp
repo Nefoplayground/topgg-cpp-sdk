@@ -52,7 +52,7 @@ BotSearch Api::search_bot(const string & query) {
 std::vector<bot_vote_t> Api::get_last_1000_votes(const string snowflake){
     const json res = this->request("/bots/" + snowflake + "/votes");
     
-    return &res;
+    return res;
 };
 
 bool Api::has_user_voted(const string botId, const string userId){
