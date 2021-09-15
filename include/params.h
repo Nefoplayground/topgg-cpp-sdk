@@ -6,7 +6,6 @@
 #include <string>
 #include <vector>
 
-using std::exception;
 using std::string;
 using std::vector;
 using std::size_t;
