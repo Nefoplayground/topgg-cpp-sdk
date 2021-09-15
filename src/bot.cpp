@@ -31,7 +31,7 @@ Bot::Bot(const json * js) {
     this->shard_count = json_num(js, "shard_count");
 }
 
-inline bool Bot::operator==(const dbl::Bot other) const {
+inline bool Bot::operator==(const Bot & other) const {
     return this->id == other.id;
 }
 

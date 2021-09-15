@@ -29,6 +29,6 @@ User::User(const json * js) {
     this->social.github = has_social ? json_str(s, "github") : "";
 }
 
-inline bool User::operator==(const dbl::User & other) const {
+inline bool User::operator==(const User & other) const {
     return this->id == other.id;
 }
