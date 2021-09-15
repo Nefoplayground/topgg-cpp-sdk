@@ -68,7 +68,7 @@ BotSearch::~BotSearch() {
     delete this->bots;
 }
 
-struct dbl::bot_stats_t dbl::create_bot_stats(nlohmann::json & js) {
+struct dbl::bot_stats_t dbl::create_bot_stats(const json * js) {
     struct dbl::bot_stats_t stats;
     
     stats.server_count = json_str(js, "server_count");
@@ -78,7 +78,7 @@ struct dbl::bot_stats_t dbl::create_bot_stats(nlohmann::json & js) {
     return stats;
 }
 
-struct dbl::bot_vote_t dbl::create_bot_vote(nlohmann::json & js) {
+struct dbl::bot_vote_t dbl::create_bot_vote(const json * js) {
     struct dbl::bot_vote_t vote;
     
     vote.username = js_str(js, "username");

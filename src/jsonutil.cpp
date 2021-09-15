@@ -22,7 +22,7 @@ vector<string> json_str_arr(const json * j, const char * path) {
     if (k == j->end() || k->is_null() || k->is_array())
         return output;
     
-    for (nlohmann::json::iterator it = k->begin(); it != k->end(); ++it) {
+    for (json::iterator it = k->begin(); it != k->end(); ++it) {
         output.push_back((*it).get<string>());
     }
     
