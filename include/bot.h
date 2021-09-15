@@ -54,11 +54,6 @@ namespace dbl {
             inline bool operator==(const dbl::Bot other) const;
     };
     
-    struct bot_search_t {
-        vector<struct dbl::bot_t> bots;
-        
-    };
-    
     class BotSearch {
         dbl::Bot * bots = nullptr;
         
