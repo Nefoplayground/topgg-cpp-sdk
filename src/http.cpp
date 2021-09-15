@@ -1,12 +1,15 @@
 #include <http.h>
 
 using dbl::Http;
+using dbl::ratelimit_type_t;
+using dbl::http_exception_t;
+using httplib::Result;
 
 void Http::handle_ratelimit(const bool & bot) {
     const time_t current = time(nullptr);
 
     if (this->next_global_request && this->global_request_count == 100 && current < this->next_global_request) {
-        const struct dbl::http_exception_t exc = { 429, dbl::ratelimit_type_t::BOT, 1 };
+        const struct http_exception_t exc = { 429, ratelimit_type_t::BOT, 1 };
         throw exc;
     } else {
         if (this->global_request_count == 100)
@@ -18,7 +21,7 @@ void Http::handle_ratelimit(const bool & bot) {
     }
     if (bot) {
         if (this->next_bot_request && this->global_bot_request_count == 60 && current < this->next_bot_request) {
-            const struct dbl::http_exception_t exc = { 429, dbl::ratelimit_type::BOT, this->next_bot_request - current };
+            const struct http_exception_t exc = { 429, dbl::ratelimit_type::BOT, this->next_bot_request - current };
             throw exc;
         } else {
             if (this->global_bot_request_count == 100)
@@ -30,7 +33,7 @@ void Http::handle_ratelimit(const bool & bot) {
     }
 }
 
-void Http::set_token(const std::string & tk) noexcept {
+void Http::set_token(const string & tk) noexcept {
     this->cli = httplib::Client("https://top.gg");
     this->cli.enable_server_certificate_verification(false);
     this->cli.set_default_headers({
@@ -39,13 +42,13 @@ void Http::set_token(const std::string & tk) noexcept {
     });
 }
 
-nlohmann::basic_json request(const std::string & path, const bool bot) {
+json request(const string & path, const bool bot) {
     this->handle_ratelimit(bot);
-    const httplib::Result res = this->cli.Get(path);
+    const Result res = this->cli.Get(path);
     if (res->status >= 400) {
-        const struct dbl::http_exception_t exc = { res->status, dbl::ratelimit_type_t::NONE, 0 };
+        const struct http_exception_t exc = { res->status, ratelimit_type_t::NONE, 0 };
         throw exc;
     }
 
-    return nlohmann::basic_json::parse(res->body);
+    return json::parse(res->body);
 }
