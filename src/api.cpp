@@ -9,8 +9,7 @@ using std::uppercase;
 using std::setw;
 using std::hex;
 
-using dbl::Api;
-using dbl::BotSearch;
+using namespace dbl;
 
 static string encode_uri(const string & value) {
     std::ostringstream escaped;
